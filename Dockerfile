@@ -9,7 +9,7 @@ RUN apt-get install -y \
     libcurl4-openssl-dev
 RUN git clone -b release https://github.com/roswell/roswell.git /roswell
 RUN cd /roswell && ./bootstrap && ./configure && make install
-ENV PATH=~/.roswell/bin/:$PATH
+ENV PATH=~/.roswell/bin:$PATH
 
 # ставим нужную версию sbcl
 RUN ros install sbcl-bin/1.4.5
@@ -21,6 +21,10 @@ RUN ros install fukamachi/qlot
 # Зафиксируем версию ASDF, чтобы во всех имплементациях она была одинакова
 # и правильно работал package inferred system
 RUN ros install asdf/3.3.1.1
+
+# Утилитка которая репортит версию Лиспа, и другую полезную для багрепортов инфу
+RUN ros install 40ants/defmain && \
+    ros install 40ants/cl-info
 
 # Для работы Woo
 RUN apt-get -y install libev4
