@@ -23,8 +23,7 @@ RUN ros install fukamachi/qlot
 RUN ros install asdf/3.3.1.1
 
 # Утилитка которая репортит версию Лиспа, и другую полезную для багрепортов инфу
-RUN ros install 40ants/defmain && \
-    ros install 40ants/cl-info
+RUN ros install 40ants/cl-info
 
 # Для работы Woo
 RUN apt-get -y install libev4
