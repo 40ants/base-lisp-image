@@ -21,7 +21,12 @@ Pull image::
 
 Start container for development::
 
-  docker run --rm --name dev-lisp -ti -p 4005:4005 -v `pwd`:/app base-lisp-image
+  docker run \
+         --rm -ti \
+         --name dev-lisp \
+         -p 4005:4005 \
+         -v `pwd`:/app \
+         40ants/base-lisp-image
 
 And of cause you can use it as a base image in your own dockerfiles.
 
