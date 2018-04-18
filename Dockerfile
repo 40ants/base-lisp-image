@@ -1,19 +1,14 @@
-FROM ubuntu:trusty
+FROM ubuntu:trusty AS lisp-image-with-roswell
 
 RUN apt-get update
 RUN apt-get install -y \
-    sbcl \
     git \
     build-essential \
     automake \
     libcurl4-openssl-dev
-RUN git clone -b release https://github.com/roswell/roswell.git /roswell
+RUN git clone https://github.com/roswell/roswell.git /roswell && cd /roswell && git checkout tags/v18.4.10.90
 RUN cd /roswell && ./bootstrap && ./configure && make install
-ENV PATH=~/.roswell/bin:$PATH
-
-# ставим нужную версию sbcl
-RUN ros install sbcl-bin/1.4.5
-RUN ros install ccl-bin/1.11.5
+ENV PATH=/root/.roswell/bin:$PATH
 
 # ставим свеженький Qlot
 RUN ros install fukamachi/qlot
@@ -33,3 +28,14 @@ RUN apt-get -y install libev4
 RUN locale-gen ru_RU.UTF-8
 ENV LC_ALL=ru_RU.UTF-8
 
+WORKDIR /app
+
+COPY install-dependencies install-dependencies.ros /usr/local/bin/
+
+
+FROM lisp-image-with-roswell AS lisp-image-with-ccl
+RUN ros install ccl-bin/1.11.5
+
+
+FROM lisp-image-with-roswell AS lisp-image-with-sbcl
+RUN ros install sbcl-bin/1.4.6

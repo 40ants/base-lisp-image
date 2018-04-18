@@ -7,13 +7,34 @@ This is a base lisp image for 40Ants projects.
 It includes `Qlot`_, `Roswell`_, ASDF (3.3.1.1) and following Lisps:
 
 * SBCL: 1.4.5
-* Clozure CL: 1.11.5.
+* Clozure CL: 1.11.5 (default)
 
 Image is based on LTS Ubuntu Trusty (16.04).
 
 
 How to use
 ==========
+
+Inherit your image from base-lisp-image
+---------------------------------------
+
+Here is a minimal example:
+
+.. code:: bash
+
+   FROM 40ants/base-lisp-image:latest-ccl
+
+   COPY qlfile qlfile.lock app-deps.asd /app/
+   RUN install-dependencies
+
+   COPY . /app
+
+   EXPOSE 80
+   CMD /app/entrypoint.sh
+
+
+Or run image as is
+------------------
 
 Pull image::
 
@@ -35,8 +56,7 @@ How to build a new image
 
 .. code::
    
-  docker build -t 40ants/base-lisp-image .
-  docker push 40ants/base-lisp-image
+   ./build.sh
 
 
 Ideas
