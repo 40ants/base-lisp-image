@@ -1,12 +1,13 @@
 FROM ubuntu:trusty AS lisp-image-with-roswell
 
-RUN apt-get update
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     git \
     build-essential \
     automake \
     libcurl4-openssl-dev
-RUN git clone https://github.com/roswell/roswell.git /roswell && cd /roswell && git checkout tags/v18.4.10.90
+RUN git clone https://github.com/roswell/roswell.git /roswell && \
+    cd /roswell && \
+    git checkout tags/v18.4.10.91
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
@@ -38,4 +39,4 @@ RUN ros install ccl-bin/1.11.5
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
-RUN ros install sbcl-bin/1.4.6
+RUN ros install sbcl-bin/1.4.8

@@ -2,6 +2,12 @@
  ChangeLog
 ===========
 
+0.3.0
+=====
+
+* Upgrade roswell from 18.4.10.90 to 18.4.10.91.
+* Upgrade SBCL from 1.4.6 to 1.4.8.
+
 0.2.1
 =====
 
