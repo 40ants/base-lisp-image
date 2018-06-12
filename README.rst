@@ -4,10 +4,11 @@
 
 This is a base lisp image for 40Ants projects.
 
-It includes `Qlot`_, `Roswell`_, ASDF (3.3.1.1) and following Lisps:
+Latest version of this image is **0.3.0**.
+It includes `Qlot`_, `Roswell`_ (18.4.10.91), ASDF (3.3.2.2) and following Lisps:
 
-* SBCL: 1.4.5
-* Clozure CL: 1.11.5 (default)
+* SBCL: 1.4.8
+* Clozure CL: 1.11.5
 
 Image is based on LTS Ubuntu Trusty (16.04).
 

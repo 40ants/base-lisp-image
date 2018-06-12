@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION=$(head -5 ChangeLog.rst | tail -1)
-IMPLEMENTATIONS="ccl sbcl"
+IMPLEMENTATIONS="ccl-bin sbcl-bin sbcl"
 
 for IMPL in $IMPLEMENTATIONS
 do
