@@ -6,6 +6,8 @@
 =====
 
 * Upgrade roswell from 18.4.10.90 to 18.4.10.91.
+  This version fixes the issue when ros build tries to download
+  https://github.com/roswell/asdf/archive/NIL.tar.gz archive.
 * Upgrade SBCL from 1.4.6 to 1.4.8.
 
 0.2.1

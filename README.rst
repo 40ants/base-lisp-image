@@ -11,6 +11,9 @@ It includes `Qlot`_, `Roswell`_, ASDF (3.3.1.1) and following Lisps:
 
 Image is based on LTS Ubuntu Trusty (16.04).
 
+It is hosted on the Docker Hub. Choose appropriate version in the
+`ChangeLog`_ and download it from `DockerHub's releases`_ page.
+
 
 How to use
 ==========
@@ -68,3 +71,5 @@ Ideas
 .. _SLY: http://joaotavora.github.io/sly/#A-SLY-tour-for-SLIME-users
 .. _Roswell: https://github.com/roswell/roswell
 .. _Qlot: https://github.com/fukamachi/qlot
+.. _DockerHub's releases: https://hub.docker.com/r/40ants/base-lisp-image/tags/
+.. _ChangeLog: ChangeLog.rst
