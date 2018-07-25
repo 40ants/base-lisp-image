@@ -2,6 +2,14 @@
  ChangeLog
 ===========
 
+0.4.0
+=====
+
+Roswell was upgraded: 18.4.10.91 -> 18.6.10.92.
+Qlot updated to the latest b783d5945cb34df72669979c96216f4837d8517a
+commit.
+SBCL was upgraded: 1.4.8 -> 1.4.9
+
 0.3.0
 =====
 
