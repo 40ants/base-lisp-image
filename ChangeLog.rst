@@ -2,7 +2,15 @@
  ChangeLog
 ===========
 
-0.4.0
+0.5.0
+=====
+
+Roswell was upgraded: 18.6.10.92 -> 18.8.10.93
+Qlot was updated to 5233f4d3bed81251e5357ab9f9e2ba5ab7af80f9 where
+custom quicklisp's distributions are supported.
+SBCL was upgraded: 1.4.9 -> 1.4.11
+
+0.4.0-exp-1
 =====
 
 Roswell was upgraded: 18.4.10.91 -> 18.6.10.92.

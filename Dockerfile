@@ -9,12 +9,12 @@ RUN apt-get update && apt-get install -y \
 # https://github.com/roswell/roswell
 RUN git clone https://github.com/roswell/roswell.git /roswell && \
     cd /roswell && \
-    git checkout tags/v18.6.10.92
+    git checkout tags/v18.8.10.93
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
 # ставим свеженький Qlot
-RUN ros install 40ants/qlot/freeze/b783d5945cb34df72669979c96216f4837d8517a
+RUN ros install 40ants/qlot/freeze/5233f4d3bed81251e5357ab9f9e2ba5ab7af80f9
 
 # Зафиксируем версию ASDF, чтобы во всех имплементациях она была одинакова
 # и правильно работал package inferred system
@@ -45,8 +45,8 @@ RUN ros install ccl-bin/1.11.5
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl-bin
-RUN ros install sbcl-bin/1.4.9
+RUN ros install sbcl-bin/1.4.11
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
-RUN ros install sbcl/1.4.9
+RUN ros install sbcl/1.4.11
