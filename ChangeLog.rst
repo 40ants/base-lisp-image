@@ -2,6 +2,19 @@
  ChangeLog
 ===========
 
+0.6.1
+=====
+
+Now default command is ``ros run``.
+
+0.6.0
+=====
+
+Roswell was upgraded: 18.8.10.93 -> 18.10.10.95
+Qlot was upgraded to b4b408b890347d94a4c31f8d5c3359472ae2931a where
+``CL_SOURCE_REGISTRY`` variable is respected and extended.
+ASDF was upgraded: 18.10.10.95 -> 3.3.2.10
+
 0.5.0
 =====
 

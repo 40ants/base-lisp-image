@@ -4,10 +4,10 @@
 
 This is a base lisp image for 40Ants projects.
 
-Latest version of this image is **0.3.0**.
-It includes `Qlot`_, `Roswell`_ (18.4.10.91), ASDF (3.3.2.2) and following Lisps:
+Latest version of this image is **0.6.0**.
+It includes `Qlot`_, `Roswell`_ (18.10.10.95), ASDF (3.3.2.10) and following Lisps:
 
-* SBCL: 1.4.8
+* SBCL: 1.4.11
 * Clozure CL: 1.11.5
 
 Image is based on LTS Ubuntu Trusty (16.04).
@@ -19,14 +19,29 @@ It is hosted on the Docker Hub. Choose appropriate version in the
 How to use
 ==========
 
-Inherit your image from base-lisp-image
----------------------------------------
+Quick start
+-----------
+
+Start container for development::
+
+  docker run \
+         --rm -ti \
+         --name dev-lisp \
+         -p 4005:4005 \
+         -v `pwd`:/app \
+         40ants/base-lisp-image:latest-ccl-bin
+
+And of cause you can use it as a base image in your own dockerfiles.
+
+
+Inherit your own image from base-lisp-image
+-------------------------------------------
 
 Here is a minimal example:
 
 .. code:: bash
 
-   FROM 40ants/base-lisp-image:latest-ccl
+   FROM 40ants/base-lisp-image:latest-ccl-bin
 
    COPY qlfile qlfile.lock app-deps.asd /app/
    RUN install-dependencies
@@ -37,23 +52,8 @@ Here is a minimal example:
    CMD /app/entrypoint.sh
 
 
-Or run image as is
-------------------
+This way you can use this image for deployment of your application.
 
-Pull image::
-
-  docker pull 40ants/base-lisp-image
-
-Start container for development::
-
-  docker run \
-         --rm -ti \
-         --name dev-lisp \
-         -p 4005:4005 \
-         -v `pwd`:/app \
-         40ants/base-lisp-image
-
-And of cause you can use it as a base image in your own dockerfiles.
 
 How to build a new image
 ========================
@@ -67,7 +67,6 @@ Ideas
 =====
 
 * Embed `SLY`_ to make it available out of the box.
-* Start versioning the image.
 
 .. _SLY: http://joaotavora.github.io/sly/#A-SLY-tour-for-SLIME-users
 .. _Roswell: https://github.com/roswell/roswell

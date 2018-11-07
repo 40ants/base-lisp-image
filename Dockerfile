@@ -9,19 +9,19 @@ RUN apt-get update && apt-get install -y \
 # https://github.com/roswell/roswell
 RUN git clone https://github.com/roswell/roswell.git /roswell && \
     cd /roswell && \
-    git checkout tags/v18.8.10.93
+    git checkout tags/v18.10.10.95
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
 # ставим свеженький Qlot
-RUN ros install 40ants/qlot/freeze/5233f4d3bed81251e5357ab9f9e2ba5ab7af80f9
+RUN ros install 40ants/qlot/freeze/b4b408b890347d94a4c31f8d5c3359472ae2931a
 
 # Зафиксируем версию ASDF, чтобы во всех имплементациях она была одинакова
 # и правильно работал package inferred system
 #
 # Какая версия последняя, можно посмотреть тут:
 # https://gitlab.common-lisp.net/asdf/asdf
-RUN ros install asdf/3.3.2.2
+RUN ros install asdf/3.3.2.10
 
 # Утилитка которая репортит версию Лиспа, и другую полезную для багрепортов инфу
 RUN ros install 40ants/cl-info
@@ -37,6 +37,8 @@ ENV LC_ALL=ru_RU.UTF-8
 WORKDIR /app
 
 COPY install-dependencies install-dependencies.ros /usr/local/bin/
+
+CMD ros run
 
 # Последняя версия:
 # https://ccl.clozure.com/download.html
