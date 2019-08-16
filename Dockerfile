@@ -1,6 +1,7 @@
 FROM ubuntu:disco AS lisp-image-with-roswell
 
 RUN apt-get update && apt-get install -y \
+    language-pack-en \
     git \
     build-essential \
     automake \
@@ -35,7 +36,6 @@ RUN apt-get -y install libev4
 
 # To suppress this style warning
 # "Character decoding error..."
-RUN locale-gen en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
 WORKDIR /app
@@ -58,4 +58,7 @@ RUN ros install sbcl-bin/1.5.5
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
-RUN ros install sbcl/1.5.5
+RUN apt-get install -y zlib1g-dev && \
+    ros install sbcl/1.5.5 && \
+    apt-get remove -y zlib1g-dev && \
+    apt-get auto-remove -y
