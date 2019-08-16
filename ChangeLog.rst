@@ -5,7 +5,7 @@
 0.7.0
 =====
 
-* Roswell was upgraded: 18.10.10.95 -> 19.06.10.100
+* Roswell was upgraded: 18.10.10.95 -> 19.06.10.100 (827d03e870138cd5fe90cf23a6e67484f0432e07)
 * Qlot was upgraded: b4b408b890347d94a4c31f8d5c3359472ae2931a -> 8a6fb6d2f6d95434b694ff53eff31521d05af23b
 * ASDF was upgraded: 3.3.2.10 -> 3.3.3.3
 * SBCL was upgraded: 1.4.11 -> 1.5.5

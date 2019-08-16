@@ -5,11 +5,14 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     automake \
     libcurl4-openssl-dev
+
 # The latest version could be found here:
 # https://github.com/roswell/roswell
 RUN git clone https://github.com/roswell/roswell.git /roswell && \
     cd /roswell && \
-    git checkout tags/v19.06.10.100
+    git checkout 827d03e870138cd5fe90cf23a6e67484f0432e07
+
+
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
@@ -41,10 +44,12 @@ COPY install-dependencies install-dependencies.ros /usr/local/bin/
 
 CMD ros run
 
+
 # The latest version:
 # https://ccl.clozure.com/download.html
 FROM lisp-image-with-roswell AS lisp-image-with-ccl-bin
 RUN ros install ccl-bin/1.11.5
+
 
 # The latest version:
 # http://www.sbcl.org
