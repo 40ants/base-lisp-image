@@ -1,4 +1,4 @@
-FROM ubuntu:trusty AS lisp-image-with-roswell
+FROM ubuntu:disco AS lisp-image-with-roswell
 
 RUN apt-get update && apt-get install -y \
     git \

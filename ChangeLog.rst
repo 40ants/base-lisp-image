@@ -2,6 +2,11 @@
  ChangeLog
 ===========
 
+0.8.0
+=====
+
+* Ubuntu was upgraded from Trusty (2014.04) to Disco (2019.04).
+
 0.7.0
 =====
 
