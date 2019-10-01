@@ -1,0 +1,73 @@
+#|-*- mode:lisp -*-|#
+(in-package :cl-user)
+(defpackage :lake.user
+  (:use :cl :lake :cl-syntax)
+  (:shadowing-import-from :lake
+                          :directory))
+(in-package :lake.user)
+
+(use-syntax :interpol)
+
+(defun search-version-in-changelog (lines)
+  (let* ((line (nth 4 lines))
+         (space-pos (position #\Space line)))
+    (when space-pos
+      (subseq line 0 space-pos))))
+
+
+(defun get-current-version ()
+  (uiop:read-file-line "ChangeLog.rst" :at #'search-version-in-changelog))
+
+
+(defvar *implementations*
+  (list "ccl-bin"
+        "sbcl-bin"
+        "sbcl"))
+
+(defvar *no-cache* nil)
+
+(defun build-implementation (version implementation &key no-cache)
+  (let ((no-cache-opt (if no-cache
+                          "--no-cache"
+                          "")))
+    (sh #?"docker build \
+           ${no-cache-opt} \
+           --target lisp-image-with-${implementation} \
+           -t 40ants/base-lisp-image:${version}-${implementation} \
+           -t 40ants/base-lisp-image:latest-${implementation} \
+           -f Dockerfile .")))
+
+
+(defun push-implementation (version implementation)
+  (sh #?"docker push 40ants/base-lisp-image:${version}-${implementation}")
+  (sh #?"docker push 40ants/base-lisp-image:latest-${implementation}"))
+
+
+(task ("build" implementation version no_cache) ()
+      (let ((version (or version
+                         (get-current-version)))
+            (implementations (if implementation
+                                 (list implementation)
+                                 *implementations*)))
+        (echo #?"Building version ${version}")
+        (mapc (alexandria:rcurry
+               (alexandria:curry #'build-implementation
+                                 version)
+               :no-cache no_cache)
+              implementations)))
+
+
+(task ("push" implementation version) ("build")
+      (let ((version (or version
+                         (get-current-version)))
+            (implementations (if implementation
+                                 (list implementation)
+                                 *implementations*)))
+        (echo #?"Building version ${version}")
+        (mapc (alexandria:curry #'push-implementation version)
+              implementations)))
+
+
+(task "default" ()
+      (format t "Version: ~A~%"
+              (get-current-version)))

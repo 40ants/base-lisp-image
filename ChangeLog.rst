@@ -2,6 +2,13 @@
  ChangeLog
 ===========
 
+0.9.0 (2019-09-14)
+==================
+
+* Roswell was upgraded: 19.06.10.100 (827d03e870138cd5fe90cf23a6e67484f0432e07) -> 19.08.10.101 (0d8e06db338878fb953883f23dee86943d4446a5)
+* Qlot was upgraded: 8a6fb6d2f6d95434b694ff53eff31521d05af23b -> 0.9.15 (340a812036749eb72443e4a572f9cde4b978f853)
+* SBCL was upgraded: 1.5.5 -> 1.5.6
+
 0.8.0
 =====
 
