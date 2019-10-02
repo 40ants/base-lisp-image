@@ -2,6 +2,12 @@
  ChangeLog
 ===========
 
+0.9.1 (2019-10-02)
+==================
+
+* Roswell was upgraded from 19.08.10.101 (0d8e06db338878fb953883f23dee86943d4446a5) to 19.09.12.102 (8d66d90b1d8c1990ad8a66c49c9e9bf26e56eb41).
+  In this version was fixed the issue with using qlot installed from Quicklisp instead of GitHub.
+
 0.9.0 (2019-09-14)
 ==================
 

@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 # https://github.com/roswell/roswell
 RUN git clone https://github.com/roswell/roswell.git /roswell && \
     cd /roswell && \
-    git checkout 0d8e06db338878fb953883f23dee86943d4446a5
+    git checkout 8d66d90b1d8c1990ad8a66c49c9e9bf26e56eb41
 
 
 RUN cd /roswell && ./bootstrap && ./configure && make install
