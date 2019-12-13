@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -x
+set -e
+
 VERSION=$(head -5 ChangeLog.rst | tail -1)
 IMPLEMENTATIONS="ccl-bin sbcl-bin sbcl"
 
