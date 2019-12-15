@@ -2,6 +2,16 @@
  ChangeLog
 ===========
 
+0.10.1 (2019-12-09)
+===================
+
+* Qlot was upgraded to 0.10.4 version where ``--no-deps`` option is supported (6fdc1ca4778a905870b6c7bbbd598b3966d53453).
+
+0.10.0 (2019-12-09)
+===================
+
+* Qlot was upgraded to 0.10.4 version (05fe3aeabefd85988dc93cb216f05c9c1d2f429a).
+
 0.9.1 (2019-10-02)
 ==================
 

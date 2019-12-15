@@ -17,7 +17,7 @@ RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
 # Installing a fresh Qlot
-RUN ros install 40ants/qlot/freeze/340a812036749eb72443e4a572f9cde4b978f853
+RUN ros install 40ants/qlot/freeze/6fdc1ca4778a905870b6c7bbbd598b3966d53453
 
 # Fixing the ASDF, to make package inferred system work
 # on all implementations
