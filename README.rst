@@ -4,13 +4,13 @@
 
 This is a base lisp image for 40Ants projects.
 
-Latest version of this image is **0.6.0**.
-It includes `Qlot`_, `Roswell`_ (18.10.10.95), ASDF (3.3.2.10) and following Lisps:
+Latest version of this image is **0.10.1**.
+It includes `Qlot`_ (0.10.4), `Roswell`_ (19.09.12.102), ASDF (3.3.3.3) and following Lisps:
 
-* SBCL: 1.4.11
+* SBCL: 1.5.6
 * Clozure CL: 1.11.5
 
-Image is based on LTS Ubuntu Trusty (16.04).
+Image is based on Ubuntu Disco (19.04).
 
 It is hosted on the Docker Hub. Choose appropriate version in the
 `ChangeLog`_ and download it from `DockerHub's releases`_ page.
@@ -29,7 +29,7 @@ Start container for development::
          --name dev-lisp \
          -p 4005:4005 \
          -v `pwd`:/app \
-         40ants/base-lisp-image:latest-ccl-bin
+         40ants/base-lisp-image:latest-sbcl-bin
 
 And of cause you can use it as a base image in your own dockerfiles.
 
@@ -41,7 +41,7 @@ Here is a minimal example:
 
 .. code:: bash
 
-   FROM 40ants/base-lisp-image:latest-ccl-bin
+   FROM 40ants/base-lisp-image:latest-sbcl-bin
 
    COPY qlfile qlfile.lock app-deps.asd /app/
    RUN install-dependencies
