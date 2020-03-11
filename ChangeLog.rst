@@ -2,10 +2,16 @@
  ChangeLog
 ===========
 
+0.11.0 (2020-03-11)
+===================
+
+* Roswell was upgraded from 19.09.12.102 (8d66d90b1d8c1990ad8a66c49c9e9bf26e56eb41) to 20.01.14.104 (df5127751b684eb2a5cdfe10fe68aab3bfb6d892)
+* Qlot was upgraded from 0.10.5 to 0.10.6 (b3ce3ce0f921119aa9ea82d0982095a3975723eb).
+
 0.10.1 (2019-12-09)
 ===================
 
-* Qlot was upgraded to 0.10.4 version where ``--no-deps`` option is supported (6fdc1ca4778a905870b6c7bbbd598b3966d53453).
+* Qlot was upgraded to 0.10.5 version where ``--no-deps`` option is supported (6fdc1ca4778a905870b6c7bbbd598b3966d53453).
 
 0.10.0 (2019-12-09)
 ===================

@@ -11,14 +11,14 @@ RUN apt-get update && apt-get install -y \
 # https://github.com/roswell/roswell
 RUN git clone https://github.com/roswell/roswell.git /roswell && \
     cd /roswell && \
-    git checkout 8d66d90b1d8c1990ad8a66c49c9e9bf26e56eb41
+    git checkout df5127751b684eb2a5cdfe10fe68aab3bfb6d892
 
 
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
 # Installing a fresh Qlot
-RUN ros install 40ants/qlot/freeze/6fdc1ca4778a905870b6c7bbbd598b3966d53453
+RUN ros install 40ants/qlot/freeze/b3ce3ce0f921119aa9ea82d0982095a3975723eb
 
 # Fixing the ASDF, to make package inferred system work
 # on all implementations
