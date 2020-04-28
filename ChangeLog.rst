@@ -2,6 +2,11 @@
  ChangeLog
 ===========
 
+0.12.0 (2020-04-28)
+===================
+
+* Downgraded Ubuntu version from Disco to Bionic, because Disco is not supported anymore, bu Bionic is LTS release and will be supported til 2023.
+
 0.11.0 (2020-03-11)
 ===================
 
