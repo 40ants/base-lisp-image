@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
 
 # The latest version could be found here:
 # https://github.com/roswell/roswell
+# This hash corresponds to 20.01.14.104 release
 RUN git clone https://github.com/roswell/roswell.git /roswell && \
     cd /roswell && \
     git checkout df5127751b684eb2a5cdfe10fe68aab3bfb6d892
@@ -17,7 +18,7 @@ RUN git clone https://github.com/roswell/roswell.git /roswell && \
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
-# Installing a fresh Qlot
+# Installing a Qlot 0.10.6
 RUN ros install 40ants/qlot/freeze/b3ce3ce0f921119aa9ea82d0982095a3975723eb
 
 # Fixing the ASDF, to make package inferred system work
