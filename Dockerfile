@@ -1,4 +1,4 @@
-FROM ubuntu:bionic AS lisp-image-with-roswell
+FROM ubuntu:focal AS lisp-image-with-roswell
 
 RUN apt-get update && apt-get install -y \
     language-pack-en \
@@ -25,10 +25,11 @@ RUN ros install 40ants/qlot/freeze/b3ce3ce0f921119aa9ea82d0982095a3975723eb
 #
 # The latest version could be found here:
 # https://gitlab.common-lisp.net/asdf/asdf
-RUN ros install asdf/3.3.3.3
+RUN ros install asdf/3.3.4.10
 
 # This utility can report a Lisp version and other
 # information, useful for bugreports
+RUN ros install svetlyak40wt/mgl-pax/mgl-pax-minimal
 RUN ros install 40ants/cl-info
 
 # To make Woo webserver work
@@ -55,11 +56,11 @@ RUN ros install ccl-bin/1.11.5
 # The latest version:
 # http://www.sbcl.org
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl-bin
-RUN ros install sbcl-bin/1.5.6
+RUN ros install sbcl-bin/2.1.2
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
 RUN apt-get install -y zlib1g-dev && \
-    ros install sbcl/1.5.6 && \
+    ros install sbcl/2.1.2 && \
     apt-get remove -y zlib1g-dev && \
     apt-get auto-remove -y

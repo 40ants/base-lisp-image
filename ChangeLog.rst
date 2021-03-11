@@ -2,6 +2,16 @@
  ChangeLog
 ===========
 
+0.13.0 (2021-03-10)
+===================
+
+* Upgraded base instance from ``ubuntu:bionic`` to ``ubuntu:focal``,
+  because newer ``sbcl-bin`` requires ``libc2 == 2.28``, but Bionic has only ``2.27``
+  ``Ubuntu:focal`` has ``libc2 == 2.31``.
+
+* Upgrade SBCL from ``1.5.6`` to ``2.1.2``.
+* Upgrade ASDF from ``3.3.3.3`` to ``3.3.4.10``.
+
 0.12.0 (2020-04-28)
 ===================
 
