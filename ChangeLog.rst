@@ -2,6 +2,17 @@
  ChangeLog
 ===========
 
+0.14.0 (2021-04-23)
+===================
+
+* Removed ``mgl-pax-minimal`` system.
+* Added system ``40ants-doc``.
+* Upgraded Roswell from ``20.01.14.104`` to ``21.01.14.108``.
+* Upgraded Qlot from ``0.10.6`` to ``0.10.8``
+* Upgraded ASDF from ``3.3.4.10`` to ``3.3.4.13``.
+* Upgraded SBCL from ``2.1.2`` to ``2.1.3``.
+* Upgraded CCL from ``1.11.5`` to ``1.12``.
+
 0.13.0 (2021-03-10)
 ===================
 
