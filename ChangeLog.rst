@@ -2,6 +2,15 @@
  ChangeLog
 ===========
 
+0.15.0 (2021-09-19)
+===================
+
+* Move Qlot from 0.10.8 to 0.11.5.
+
+  **Pay attention!** 0.10.x and 0.11.x are incompatible and if you've
+  generated qlfile.lock using 0.11.x, you'll not be able to do ``qlot install``
+  using qlot 0.10.x.
+
 0.14.0 (2021-04-23)
 ===================
 

@@ -18,8 +18,8 @@ RUN git clone https://github.com/roswell/roswell.git /roswell && \
 RUN cd /roswell && ./bootstrap && ./configure && make install
 ENV PATH=/root/.roswell/bin:$PATH
 
-# Installing a Qlot 0.10.8
-RUN ros install 40ants/qlot/freeze/46dd24842928cc423c17eacd49bf026ae6887d9d
+# Installing a Qlot 0.11.5
+RUN ros install fukamachi/qlot/0.11.5
 
 # Fixing the ASDF, to make package inferred system work
 # on all implementations
