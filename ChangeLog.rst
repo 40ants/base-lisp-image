@@ -2,6 +2,16 @@
  ChangeLog
 ===========
 
+0.17.0 (2022-06-14)
+===================
+
+* Using Fukamachi's base image with roswell and SBCL. And move to SBCL 2.2.5
+
+0.16.0 (2022-06-14)
+===================
+
+* Using some trick to minimize image size
+
 0.15.0 (2021-09-19)
 ===================
 

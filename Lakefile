@@ -1,12 +1,16 @@
 #|-*- mode:lisp -*-|#
 (in-package :cl-user)
+(ql:quickload '(:cl-interpol :named-readtables))
+
 (defpackage :lake.user
-  (:use :cl :lake :cl-syntax)
+  (:use :cl :lake)
   (:shadowing-import-from :lake
                           :directory))
 (in-package :lake.user)
 
-(use-syntax :interpol)
+
+(named-readtables:in-readtable :interpol-syntax)
+;;(use-syntax :interpol)
 
 (defun search-version-in-changelog (lines)
   (let* ((line (nth 4 lines))
@@ -30,7 +34,7 @@
   (let ((no-cache-opt (if no-cache
                           "--no-cache"
                           "")))
-    (sh #?"docker build \
+    (sh #?"DOCKER_BUILDKIT=1 docker build \
            ${no-cache-opt} \
            --target lisp-image-with-${implementation} \
            -t 40ants/base-lisp-image:${version}-${implementation} \

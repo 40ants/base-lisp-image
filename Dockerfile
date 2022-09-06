@@ -1,22 +1,17 @@
-FROM ubuntu:focal AS lisp-image-with-roswell
+FROM fukamachi/sbcl:2.2.5-ubuntu AS lisp-image-with-roswell
 
-RUN apt-get update && apt-get install -y \
-    language-pack-en \
-    git \
-    build-essential \
-    automake \
-    libcurl4-openssl-dev
+# Also, we are installing libev4 make Woo webserver work.
 
-# The latest version could be found here:
-# https://github.com/roswell/roswell
-# This hash corresponds to 21.01.14.108 release
-RUN git clone https://github.com/roswell/roswell.git /roswell && \
-    cd /roswell && \
-    git checkout 0b7504f39a19a4a9c7487141b12ecb5f7ae41380
+RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
+    apt-get update && \
+    apt-get install -y \
+    locales \
+    libev4
 
-
-RUN cd /roswell && ./bootstrap && ./configure && make install
-ENV PATH=/root/.roswell/bin:$PATH
+# To suppress this style warning
+# "Character decoding error..."
+RUN locale-gen en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
 # Installing a Qlot 0.11.5
 RUN ros install fukamachi/qlot/0.11.5
@@ -32,14 +27,6 @@ RUN ros install asdf/3.3.4.13
 # information, useful for bugreports
 RUN ros install 40ants/doc
 RUN ros install 40ants/cl-info
-
-# To make Woo webserver work
-RUN apt-get -y install libev4
-
-# To suppress this style warning
-# "Character decoding error..."
-RUN apt-get -y install locales && locale-gen en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
 
 WORKDIR /app
 
@@ -57,11 +44,12 @@ RUN ros install ccl-bin/1.12
 # The latest version:
 # http://www.sbcl.org
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl-bin
-RUN ros install sbcl-bin/2.1.3
+RUN ros install sbcl-bin/2.2.5
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
-RUN apt-get install -y zlib1g-dev && \
-    ros install sbcl/2.1.3 && \
-    apt-get remove -y zlib1g-dev && \
-    apt-get auto-remove -y
+RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
+    apt-get update && \
+    apt-get install -y zlib1g-dev && \
+    ros install sbcl/2.2.5 && \
+    apt-get remove -y --auto-remove zlib1g-dev
