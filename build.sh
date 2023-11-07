@@ -4,7 +4,7 @@ set -x
 set -e
 
 VERSION=$(head -5 ChangeLog.rst | tail -1 | cut -d ' ' -f 1)
-IMPLEMENTATIONS="ccl-bin sbcl-bin sbcl"
+IMPLEMENTATIONS="ccl-bin sbcl-bin"
 echo "Building version $VERSION"
 
 for IMPL in $IMPLEMENTATIONS

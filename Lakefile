@@ -36,6 +36,7 @@
                           "")))
     (sh #?"DOCKER_BUILDKIT=1 docker build \
            ${no-cache-opt} \
+           --add-host 'beta.quicklisp.org:13.33.243.6' \
            --target lisp-image-with-${implementation} \
            -t 40ants/base-lisp-image:${version}-${implementation} \
            -t 40ants/base-lisp-image:latest-${implementation} \

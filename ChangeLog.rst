@@ -5,7 +5,8 @@
 0.18.0 (2023-11-06)
 ===================
 
-* Move to SBCL 2.3.10
+* Move to SBCL 2.3.10.
+* Removed SBCL built from scratch. Only sbcl-bin is available now.
 
 0.17.0 (2022-06-14)
 ===================
