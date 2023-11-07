@@ -1,4 +1,4 @@
-FROM fukamachi/sbcl:2.2.5-ubuntu AS lisp-image-with-roswell
+FROM fukamachi/sbcl:2.3.10-ubuntu AS lisp-image-with-roswell
 
 # Also, we are installing libev4 make Woo webserver work.
 
@@ -44,12 +44,12 @@ RUN ros install ccl-bin/1.12
 # The latest version:
 # http://www.sbcl.org
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl-bin
-RUN ros install sbcl-bin/2.2.5
+RUN ros install sbcl-bin/2.3.10
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
     apt-get update && \
     apt-get install -y zlib1g-dev && \
-    ros install sbcl/2.2.5 && \
+    ros install sbcl/2.3.10 && \
     apt-get remove -y --auto-remove zlib1g-dev
