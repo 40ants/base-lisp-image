@@ -44,12 +44,16 @@ RUN ros install ccl-bin/1.12
 # The latest version:
 # http://www.sbcl.org
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl-bin
-RUN ros install sbcl-bin/2.3.10
+RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
+    apt-get update && \
+    apt-get install -y bzip2 && \
+    ros install sbcl-bin/2.4.6 && \
+    apt-get remove -y --auto-remove bzip2
 
 
 FROM lisp-image-with-roswell AS lisp-image-with-sbcl
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
     apt-get update && \
     apt-get install -y zlib1g-dev && \
-    ros install sbcl/2.3.10 && \
+    ros install sbcl/2.4.6 && \
     apt-get remove -y --auto-remove zlib1g-dev
