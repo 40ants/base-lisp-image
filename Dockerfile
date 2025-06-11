@@ -13,19 +13,20 @@ RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/
 RUN locale-gen en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
-# Installing a Qlot 0.11.5
-RUN ros install fukamachi/qlot/0.11.5
+# Installing a Qlot
+RUN ros install fukamachi/qlot/1.7.1
 
 # Fixing the ASDF, to make package inferred system work
 # on all implementations
 #
 # The latest version could be found here:
 # https://gitlab.common-lisp.net/asdf/asdf
-RUN ros install asdf/3.3.4.13
+RUN ros install asdf/3.3.7.2
 
 # This utility can report a Lisp version and other
 # information, useful for bugreports
-RUN ros install 40ants/doc
+RUN ros install 40ants/40ants-asdf-system
+RUN ros install 40ants/cl-info
 RUN ros install 40ants/cl-info
 
 WORKDIR /app
@@ -47,7 +48,7 @@ FROM lisp-image-with-roswell AS lisp-image-with-sbcl-bin
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
     apt-get update && \
     apt-get install -y bzip2 && \
-    ros install sbcl-bin/2.4.6 && \
+    ros install sbcl-bin/2.5.4 && \
     apt-get remove -y --auto-remove bzip2
 
 
@@ -55,5 +56,5 @@ FROM lisp-image-with-roswell AS lisp-image-with-sbcl
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt set -x; \
     apt-get update && \
     apt-get install -y zlib1g-dev && \
-    ros install sbcl/2.4.6 && \
+    ros install sbcl/2.5.4 && \
     apt-get remove -y --auto-remove zlib1g-dev

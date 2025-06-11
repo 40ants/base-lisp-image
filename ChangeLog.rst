@@ -2,6 +2,14 @@
  ChangeLog
 ===========
 
+0.20.0 (2025-05-23)
+===================
+
+* Qlot was upgraded from 0.11.5 to 1.7.1.
+* SBCL was upgraded from 2.4.6 to 2.5.4.
+* ASDF was upgraded from 3.3.4.13 to 3.3.7.2.
+* Also, now script ``install-dependencies`` loads all ASDF systems ending with ``-deps`` instead of loading only ``app-deps`` system.
+
 0.19.0 (2024-06-01)
 ===================
 

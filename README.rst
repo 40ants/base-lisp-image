@@ -4,10 +4,10 @@
 
 This is a base lisp image for 40Ants projects.
 
-Latest version of this image is **0.14.0**.
-It includes `Qlot`_ (0.10.8), `Roswell`_ (21.01.14.108), ASDF (3.3.4.13) and following Lisps:
+Latest version of this image is **0.20.0**.
+It includes `Qlot`_ (1.7.1), `Roswell`_ (21.01.14.108), ASDF (3.3.7.2) and following Lisps:
 
-* SBCL: 2.1.3
+* SBCL: 2.5.4
 * Clozure CL: 1.11.5
 
 Image is based on Ubuntu Focal (20.04 LTS).
@@ -59,7 +59,7 @@ How to build a new image
 ========================
 
 .. code::
-   
+
    ./build.sh
 
 

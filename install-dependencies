@@ -4,18 +4,21 @@ BASEDIR="$(dirname $0)"
 
 set -e
 
-if [[ ! -e qlfile ]] || [[ ! -e app-deps.asd ]]; then
+if [[ ! -e qlfile ]] || ! (ls | grep --silent deps.asd ); then
     echo 'Add this line to your Dockerfile'
     echo 'COPY qlfile qlfile.lock app-deps.asd /app/'
     exit 1
 fi
 
 
-qlot install
+if [[ ! -e .qlot ]]; then
+    qlot install --no-deps
+fi
 
 # Use `qlot exec gen-deps-system app`
 # to regenerate app-deps.asd file
-qlot exec "${BASEDIR}/install-dependencies.ros"
+CL_SOURCE_REGISTRY=`pwd`/ qlot exec "${BASEDIR}/install-dependencies.ros"
+
 
 # qlot exec ros \
 #     --eval '(handler-case (ql:quickload "app-deps") \

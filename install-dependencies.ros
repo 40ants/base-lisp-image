@@ -14,9 +14,19 @@ exec ros -Q -- $0 "$@"
 
 (defun main (&rest argv)
   (declare (ignorable argv))
-  (handler-case (ql:quickload "app-deps")
-    (error (c)
-      (uiop:print-condition-backtrace c :count 20)
-      (uiop:quit 1))))
+  
+  (loop for full-path in (directory uiop:*wild-file*)
+        for ext = (pathname-type full-path)
+        for name = (pathname-name full-path)
+        when (and (string-equal ext "asd")
+                  (<= 5 (length name))
+                  (string-equal (subseq name
+                                        (- (length name)
+                                           5))
+                                "-deps"))
+        do (handler-case (ql:quickload name)
+             (error (c)
+               (uiop:print-condition-backtrace c :count 20)
+               (uiop:quit 1)))))
 
 ;;; vim: set ft=lisp lisp:
