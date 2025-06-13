@@ -2,6 +2,11 @@
  ChangeLog
 ===========
 
+0.21.0 (2025-06-13)
+===================
+
+* Qlot was upgraded from 1.7.1 to 1.7.2. In this version bug with updating to the the latest version of Ultralisp if the exact version is spectified in qlfile was fixed.
+
 0.20.0 (2025-05-23)
 ===================
 

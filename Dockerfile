@@ -14,7 +14,7 @@ RUN locale-gen en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
 # Installing a Qlot
-RUN ros install fukamachi/qlot/1.7.1
+RUN ros install fukamachi/qlot/1.7.2
 
 # Fixing the ASDF, to make package inferred system work
 # on all implementations
